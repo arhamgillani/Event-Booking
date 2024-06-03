@@ -1,7 +1,6 @@
 Event Booking System
 This is a Spring Boot application for an Event Booking System. The application allows users to register, login, book tickets, manage events, and view bookings.
 
-
 Table of Contents
 * Getting Started
 * Building and Running the Application
@@ -11,13 +10,11 @@ Table of Contents
    * Event API
 * Technologies Used
 
-
 Prerequisites
 * Java 17
 * Maven
 * An IDE (e.g., IntelliJ IDEA, Eclipse)
 * (Optional) Postman for API testing
-
 
 Clone the Repository
 Git clone https://github.com/arhamgillani/Event-Booking.git
@@ -31,7 +28,6 @@ mvn clean install
 Run the Application
 Use the following Maven command to run the application:
 mvn spring-boot:run
-
 
 The application will start running on http://localhost:8080.
 
@@ -71,9 +67,6 @@ Response:
   },
   "error": false
 }
-
-
-
 
 Booking API
 Book Tickets
