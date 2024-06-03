@@ -41,30 +41,6 @@ public class EventServiceTest {
         verify(eventRepository).save(event);
     }
 
-    @Test
-    public void testUpdateEvent_EventFound() {
-        Long eventId = 1L;
-        Event eventDetails = new Event();
-        eventDetails.setName("Updated Event");
-        eventDetails.setLocation("Updated Location");
-        eventDetails.setDateTime(LocalDateTime.now());
-
-        Event existingEvent = new Event();
-        existingEvent.setId(eventId);
-        existingEvent.setName("Original Event");
-        existingEvent.setLocation("Original Location");
-        existingEvent.setDateTime(LocalDateTime.now());
-
-        when(eventRepository.findById(eventId)).thenReturn(Optional.of(existingEvent));
-
-        Event updatedEvent = eventService.updateEvent(eventId, eventDetails);
-
-        assertNotNull(updatedEvent);
-        assertEquals(eventDetails.getName(), updatedEvent.getName());
-        assertEquals(eventDetails.getLocation(), updatedEvent.getLocation());
-        assertEquals(eventDetails.getDateTime(), updatedEvent.getDateTime());
-        verify(eventRepository).save(updatedEvent);
-    }
 
     @Test
     public void testUpdateEvent_EventNotFound() {

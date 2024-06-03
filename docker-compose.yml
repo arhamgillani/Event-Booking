@@ -1,0 +1,24 @@
+version: '3.1.0'
+
+services:
+  # Spring Boot application
+  spring-boot-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
+
+  # H2 database
+  database:
+    image: "openjdk:17.0.9-jdk-slim"
+    command: "java -cp h2*.jar org.h2.tools.Server"
+    ports:
+      - "1521:1521"
+      - "8082:8082"
+    volumes:
+      - ./h2:/opt/h2
+    environment:
+      H2_OPTIONS: '-ifNotExists -webAllowOthers -tcpAllowOthers -tcp -web -tcpPort 1521 -webPort 8082'

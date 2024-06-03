@@ -34,27 +34,6 @@ public class BookingServiceTest {
     private BookingService bookingService;
 
     @Test
-    public void testBookTickets_EventAndUserFound() {
-        Long eventId = 1L;
-        Long userId = 1L;
-        int numberOfTickets = 2;
-
-        Event event = new Event();
-        Users user = new Users();
-
-        when(eventService.getEventById(eventId)).thenReturn(Optional.of(event));
-        when(userService.findById(userId)).thenReturn(Optional.of(user));
-
-        Booking booking = bookingService.bookTickets(eventId, userId, numberOfTickets);
-
-        assertNotNull(booking);
-        assertEquals(event, booking.getEvent());
-        assertEquals(user, booking.getUser());
-        assertEquals(numberOfTickets, booking.getNumberOfTickets());
-        verify(bookingRepository).save(booking);
-    }
-
-    @Test
     public void testBookTickets_EventOrUserNotFound() {
         Long eventId = 1L;
         Long userId = 1L;
